@@ -18,6 +18,9 @@
 		1A9D6C201CD2A6B100FF91CD /* OpenHumansUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D6C1F1CD2A6B100FF91CD /* OpenHumansUploadTests.swift */; };
 		1A9D6C2B1CD2A6B200FF91CD /* OpenHumansUploadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D6C2A1CD2A6B200FF91CD /* OpenHumansUploadUITests.swift */; };
 		1A9D6C391CD2AC5900FF91CD /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A9D6C381CD2AC5900FF91CD /* HealthKit.framework */; };
+		1AD810B11D075E2A00867498 /* OH_OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD810B01D075E2A00867498 /* OH_OAuth2.swift */; };
+		1AD810B31D076D3300867498 /* OhSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B21D076D3300867498 /* OhSettings.plist */; };
+		1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B61D076F1000867498 /* OhSettings-example.plist */; };
 		A67936BEDE8E97E359AA1023 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CEEE8AFA5AB76583838A0D /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +60,9 @@
 		1A9D6C2C1CD2A6B200FF91CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A9D6C381CD2AC5900FF91CD /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1A9D6C3A1CD2AC5900FF91CD /* OpenHumansUpload.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = OpenHumansUpload.entitlements; sourceTree = "<group>"; };
+		1AD810B01D075E2A00867498 /* OH_OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OH_OAuth2.swift; sourceTree = "<group>"; };
+		1AD810B21D076D3300867498 /* OhSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OhSettings.plist; sourceTree = "<group>"; };
+		1AD810B61D076F1000867498 /* OhSettings-example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OhSettings-example.plist"; sourceTree = "<group>"; };
 		2E6E021EAD0989AA8D7843C2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BEC9B1C0FFE6F2C996904AF6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C2CEEE8AFA5AB76583838A0D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +139,9 @@
 				1A9D6C131CD2A6B100FF91CD /* LaunchScreen.storyboard */,
 				1A9D6C161CD2A6B100FF91CD /* Info.plist */,
 				1A9D6C0E1CD2A6B100FF91CD /* OpenHumansUpload.xcdatamodeld */,
+				1AD810B01D075E2A00867498 /* OH_OAuth2.swift */,
+				1AD810B21D076D3300867498 /* OhSettings.plist */,
+				1AD810B61D076F1000867498 /* OhSettings-example.plist */,
 			);
 			path = OpenHumansUpload;
 			sourceTree = "<group>";
@@ -289,6 +298,8 @@
 				1A9D6C151CD2A6B100FF91CD /* LaunchScreen.storyboard in Resources */,
 				1A9D6C121CD2A6B100FF91CD /* Assets.xcassets in Resources */,
 				1A9D6C0D1CD2A6B100FF91CD /* Main.storyboard in Resources */,
+				1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */,
+				1AD810B31D076D3300867498 /* OhSettings.plist in Resources */,
 				1A52928A1D00B7880081F097 /* openhumans.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A9D6C0A1CD2A6B100FF91CD /* ViewController.swift in Sources */,
+				1AD810B11D075E2A00867498 /* OH_OAuth2.swift in Sources */,
 				1A9D6C081CD2A6B100FF91CD /* AppDelegate.swift in Sources */,
 				1A9D6C101CD2A6B100FF91CD /* OpenHumansUpload.xcdatamodeld in Sources */,
 			);

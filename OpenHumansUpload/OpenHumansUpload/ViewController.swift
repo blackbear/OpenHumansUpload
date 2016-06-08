@@ -10,7 +10,7 @@ import UIKit
 import HealthKit
 import Kanna
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,OHOAuth2Client {
 
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var instructions: UILabel!
@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     var currentState = AppState.Start
     
     override func viewDidLoad() {
+        OH_OAuth2.sharedInstance().subscribeToEvents(self)
         super.viewDidLoad()
         webView.hidden = true
         instructions.text = "Welcome to the Open Humans Healthkit Intergrator"
@@ -31,7 +32,32 @@ class ViewController: UIViewController {
         webView.layer.borderWidth = 2
         webView.layer.borderColor = UIColor.blackColor().CGColor
     }
+    
+    deinit {
+        OH_OAuth2.sharedInstance().unsubscribeToEvents(self)
+    }
+    
+    func authenticateSucceeded(accessToken : String) -> Void {
+        currentState = .Postlogin
+        nextAction(self)
 
+    }
+
+    func authenticateFailed() -> Void {
+        instructions.text = "To begin, you need to authenticate your identity with the Open Humans Web Site."
+        actionButton.setTitle("Go to Open Humans website", forState: .Normal)
+        currentState = .Prelogin
+    }
+
+    func authenticateCanceled() -> Void {
+        authenticateFailed()
+    }
+
+
+    override func viewDidAppear(animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,20 +70,11 @@ class ViewController: UIViewController {
     @IBAction func nextAction(sender: AnyObject) {
         switch currentState {
         case .Start:
-            let prefs = NSUserDefaults.standardUserDefaults()
-            if let token = prefs.stringForKey("oauth2_token") {
-                instructions.text = "Authorizing..."
-                validateToken(token)
-            } else {
-                instructions.text = "To begin, you need to authenticate your identity with the Open Humans Web Site."
-                actionButton.setTitle("Go to Open Humans website", forState: .Normal)
-                currentState = .Prelogin
-            }
+            OH_OAuth2.sharedInstance().authenticateOAuth2(self)
         case .Prelogin:
-            webView.hidden = false;
-            let url = NSURL (string: "https://www.openhumans.org/direct-sharing/projects/oauth2/authorize/?client_id=UnO6uvDitZ6K1sSSTfKQZ5Jgs5Zj0Tc58sXXI7qw&response_type=code");
-            let requestObj = NSURLRequest(URL: url!);
-            webView.loadRequest(requestObj);
+            print("Ooops")
+        case .Postlogin:
+            print("Authenticated")
         default:
             print("Ooops")
         }

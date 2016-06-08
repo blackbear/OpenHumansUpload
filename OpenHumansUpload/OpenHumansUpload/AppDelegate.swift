@@ -14,34 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        let components = NSURLComponents.init(URL: url, resolvingAgainstBaseURL: false)
-        if let queryItems = components?.queryItems {
-            for queryItem in queryItems {
-                if queryItem.name == "code" {
-                    var request = NSMutableURLRequest(URL: NSURL(string: "https://www.openhumans.org/oauth2/token/")!)
-                    var session = NSURLSession.sharedSession()
-                    request.HTTPMethod = "POST"
-                    let loginString = NSString(format: "%@:%@", "UnO6uvDitZ6K1sSSTfKQZ5Jgs5Zj0Tc58sXXI7qw", "ZBj9LbogxgMQg5AV2ieZOb9AEi5GVCeq5UbWIVHjLH1ABkxxTL17vOkXpCLbqoIITaGEFIx2DCgG4vZEhyOGQ2oHzHZitNqQIVM0FOgUSPqawteA3PnXC6Q7Q5BMTveE")
-                    let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-                    let base64LoginString = loginData.base64EncodedStringWithOptions([])
-                    request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-                    request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                    
-                    var params = ["grant_type":"authorization_code", "code":queryItem.value!, "redirect_uri" : "openhumanshk://"] as Dictionary<String, String>
-                    
-                    let reqString = "grant_type=authorization_code&code="+queryItem.value!+"&redirect_uri=openhumanshk://";
-                    request.HTTPBody = reqString.dataUsingEncoding(NSUTF8StringEncoding)
-                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.addValue("application/json", forHTTPHeaderField: "Accept")
-                    
-                    var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-                        print(response)
-                        print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-                    })
-                    task.resume()
-                }
-            }
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        if (OH_OAuth2.sharedInstance().parseLaunchURL(url)) {
+            return true;
         }
         return true;
     }
