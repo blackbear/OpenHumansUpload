@@ -7,7 +7,7 @@ Secondly, it contains a stand-alone class (`OH_OAuth2`) that can be used by othe
 
 ## Using the `OH_OAuth2` Class
 
-1. Include the `OH_OAuth2.swift` file in your project.
+1. Include the `OH_OAuth2.swift`, `OhSettings-example.plist` and `close-button.png` files in your project.
 2. Add the following call to your AppDelegate's `openURL` method:
 
     ```
