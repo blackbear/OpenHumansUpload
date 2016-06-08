@@ -95,7 +95,8 @@ class OH_OAuth2 {
     func processResponse(data : NSData?, error: NSError?) -> Void {
         if (error != nil) {
             for client in self.subscribers {
-                client.authenticateFailed();
+                self.clearCachedToken()
+                client.authenticateFailed()
             }
             return;
             
@@ -107,7 +108,6 @@ class OH_OAuth2 {
             let refreshToken = json!["refresh_token"] as! String
             let prefs = NSUserDefaults.standardUserDefaults()
             prefs.setValue(refreshToken, forKeyPath:"oauth2_refresh_token")
-            
             for client in self.subscribers {
                 client.authenticateSucceeded(accessToken)
             }
@@ -140,13 +140,18 @@ class OH_OAuth2 {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            var respString = String(data, NSUTF8StringEncoding)
-            print(respString)
             if self.wv_vc != nil {
                 self.wv_vc?.dismissViewControllerAnimated(true,completion: {
                     self.processResponse(data, error:error);
                 });
             } else {
+                let httpResponse = response as! NSHTTPURLResponse
+                if httpResponse.statusCode == 401 {
+                    self.clearCachedToken()
+                    for client in self.subscribers {
+                        client.authenticateFailed()
+                    }
+                }
                 self.processResponse(data, error:error);
             }
         });
@@ -164,6 +169,17 @@ class OH_OAuth2 {
     func unsubscribeToEvents(listener: OHOAuth2Client) {
         subscribers = subscribers.filter() { $0  !== listener }
     }
+    
+    func hasCachedToken() -> Bool {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        return prefs.stringForKey("oauth2_refresh_token") != nil
+    }
+
+    func clearCachedToken() -> Void {
+        let prefs = NSUserDefaults.standardUserDefaults()
+        prefs.removeObjectForKey("oauth2_refresh_token")
+    }
+
     
     func authenticateOAuth2<C1: ViewController where C1:OHOAuth2Client>(vc:C1) -> Void {
         
