@@ -21,6 +21,7 @@
 		1AD810B11D075E2A00867498 /* OH_OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD810B01D075E2A00867498 /* OH_OAuth2.swift */; };
 		1AD810B31D076D3300867498 /* OhSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B21D076D3300867498 /* OhSettings.plist */; };
 		1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B61D076F1000867498 /* OhSettings-example.plist */; };
+		1AD810BB1D08985A00867498 /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810BA1D08985A00867498 /* close-button.png */; };
 		A67936BEDE8E97E359AA1023 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CEEE8AFA5AB76583838A0D /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		1AD810B01D075E2A00867498 /* OH_OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OH_OAuth2.swift; sourceTree = "<group>"; };
 		1AD810B21D076D3300867498 /* OhSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OhSettings.plist; sourceTree = "<group>"; };
 		1AD810B61D076F1000867498 /* OhSettings-example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OhSettings-example.plist"; sourceTree = "<group>"; };
+		1AD810BA1D08985A00867498 /* close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-button.png"; sourceTree = "<group>"; };
 		2E6E021EAD0989AA8D7843C2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		BEC9B1C0FFE6F2C996904AF6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C2CEEE8AFA5AB76583838A0D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 		1A9D6C061CD2A6B100FF91CD /* OpenHumansUpload */ = {
 			isa = PBXGroup;
 			children = (
+				1AD810BA1D08985A00867498 /* close-button.png */,
 				1A52928B1D00B78E0081F097 /* assets */,
 				1A9D6C3A1CD2AC5900FF91CD /* OpenHumansUpload.entitlements */,
 				1A9D6C071CD2A6B100FF91CD /* AppDelegate.swift */,
@@ -297,6 +300,7 @@
 			files = (
 				1A9D6C151CD2A6B100FF91CD /* LaunchScreen.storyboard in Resources */,
 				1A9D6C121CD2A6B100FF91CD /* Assets.xcassets in Resources */,
+				1AD810BB1D08985A00867498 /* close-button.png in Resources */,
 				1A9D6C0D1CD2A6B100FF91CD /* Main.storyboard in Resources */,
 				1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */,
 				1AD810B31D076D3300867498 /* OhSettings.plist in Resources */,

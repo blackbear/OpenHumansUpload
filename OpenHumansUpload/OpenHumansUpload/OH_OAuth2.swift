@@ -41,7 +41,7 @@ protocol OHOAuth2Client : class {
 
 let oauthsharedInstance = OH_OAuth2()
 
-class OH_OAuth2 {
+class OH_OAuth2 : NSObject {
     
     static func sharedInstance() -> OH_OAuth2 {
         return oauthsharedInstance;
@@ -58,7 +58,8 @@ class OH_OAuth2 {
     var applicationURLScheme=""
     
     
-    init() {
+    override init() {
+        super.init()
         if let path = NSBundle.mainBundle().pathForResource("OhSettings", ofType: "plist"), dict = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
             ohSecretKey = dict["oh_client_secret"] as! String
             ohClientId = dict["oh_client_id"] as! String
@@ -180,6 +181,21 @@ class OH_OAuth2 {
         prefs.removeObjectForKey("oauth2_refresh_token")
     }
 
+    func closeWeb () -> Void {
+        if self.wv_vc != nil {
+            self.wv_vc?.dismissViewControllerAnimated(true,completion: {
+                for client in self.subscribers {
+                    client.authenticateCanceled()
+                }
+
+            })
+        } else {
+            for client in self.subscribers {
+                client.authenticateCanceled()
+            }
+            
+        }
+    }
     
     func authenticateOAuth2<C1: ViewController where C1:OHOAuth2Client>(vc:C1) -> Void {
         
@@ -193,6 +209,11 @@ class OH_OAuth2 {
             wv_vc!.view = UIView(frame:(vc.view.frame))
             let wv = UIWebView(frame: vc.view.frame)
             wv_vc!.view.addSubview(wv)
+            let closeImage = UIImage(named: "close-button")
+            let cancelButton = UIButton(frame: CGRectMake(wv.frame.width - 50, 0, 50, 50))
+            cancelButton.addTarget(self, action: #selector(OH_OAuth2.closeWeb), forControlEvents: .TouchUpInside)
+            cancelButton.setImage(closeImage, forState: UIControlState.Normal)
+            wv_vc!.view.addSubview(cancelButton)
             vc.presentViewController(wv_vc!, animated: true, completion: {
                 wv.loadRequest(requestObj);
             });
