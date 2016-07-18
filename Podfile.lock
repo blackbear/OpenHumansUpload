@@ -1,10 +1,12 @@
 PODS:
-  - Kanna (1.0.6)
+  - HealthKitSampleGenerator (1.0.4)
 
 DEPENDENCIES:
-  - Kanna (~> 1.0.0)
+  - HealthKitSampleGenerator
 
 SPEC CHECKSUMS:
-  Kanna: 9f30945bbd293a609f698ea164687ccc0990ff60
+  HealthKitSampleGenerator: 5a56763c6689ccd9eab96a9f60c107bd867eadff
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 7a7edc41b42dae06f940da990c4d590ad14ce70e
+
+COCOAPODS: 1.0.1

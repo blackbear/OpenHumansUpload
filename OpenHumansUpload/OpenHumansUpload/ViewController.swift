@@ -8,15 +8,18 @@
 
 import UIKit
 import HealthKit
-import Kanna
+import Foundation
 
-class ViewController: UIViewController,OHOAuth2Client {
+class ViewController: UIViewController {
 
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var instructions: UILabel!
     var healthStore : HKHealthStore!
     
-    @IBOutlet weak var webView: UIWebView!
+    var accessToken = ""
+    
+    var fileList : JSONArray = JSONArray()
+    
     enum AppState {
         case Start, Checking, Prelogin, Postlogin
     }
@@ -24,33 +27,63 @@ class ViewController: UIViewController,OHOAuth2Client {
     var currentState = AppState.Start
     
     override func viewDidLoad() {
-        OH_OAuth2.sharedInstance().subscribeToEvents(self)
         super.viewDidLoad()
-        webView.hidden = true
-        instructions.text = "Welcome to the Open Humans Healthkit Intergrator"
-        webView.layer.cornerRadius = 5
-        webView.layer.borderWidth = 2
-        webView.layer.borderColor = UIColor.blackColor().CGColor
+        instructions.hidden = true
+        actionButton.hidden = true
+        let oauth = OH_OAuth2.sharedInstance();
+        if oauth.hasCachedToken() {
+            OH_OAuth2.sharedInstance().authenticateOAuth2(self, allowLogin: false, handler: { (status : AuthorizationStatus) -> Void in
+                if (status == AuthorizationStatus.AUTHORIZED) {
+                    OH_OAuth2.sharedInstance().getMemberInfo({ (memberId, messagePermission, usernameShared, username, files) in
+                        self.fileList = files
+                        dispatch_async(dispatch_get_main_queue(), { 
+                            self.performSegueWithIdentifier("startupToMain", sender: self)
+                        })
+                        }, onFailure: {
+                            dispatch_async(dispatch_get_main_queue(), { 
+                                self.authenticateRequiresLogin()
+                            })
+                            
+                    })
+                } else {
+                    self.authenticateRequiresLogin()
+                }
+                
+            });
+        } else {
+            self.authenticateRequiresLogin()
+        }
+        
     }
     
-    deinit {
-        OH_OAuth2.sharedInstance().unsubscribeToEvents(self)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "startupToMain") {
+            var vc = segue.destinationViewController as! MainMenu
+            vc.fileList = fileList
+        }
     }
     
-    func authenticateSucceeded(accessToken : String) -> Void {
-        currentState = .Postlogin
-        nextAction(self)
-
+    
+    func authenticateRequiresLogin() {
+        instructions.text = "Welcome to the Open Humans HealthKit Uploader. This tool will allow you to upload your data in JSON format to the Open Humans website so that researchers can access the information you have recorded on your device.\n\nTo begin, you need to authenticate your identity with the Open Humans Web Site."
+        actionButton.setTitle("Go to Open Humans website", forState: .Normal)
+        instructions.hidden = false
+        actionButton.hidden = false
+    }
+    
+    func uploadSucceeded(res: String) {
+        print(res);
+    }
+    func memberInfoFailed() {
+        
     }
 
     func authenticateFailed() -> Void {
-        instructions.text = "To begin, you need to authenticate your identity with the Open Humans Web Site."
-        actionButton.setTitle("Go to Open Humans website", forState: .Normal)
-        currentState = .Prelogin
+        authenticateRequiresLogin()
     }
 
     func authenticateCanceled() -> Void {
-        authenticateFailed()
+        authenticateRequiresLogin()
     }
 
 
@@ -68,170 +101,16 @@ class ViewController: UIViewController,OHOAuth2Client {
     }
     
     @IBAction func nextAction(sender: AnyObject) {
-        switch currentState {
-        case .Start:
-            OH_OAuth2.sharedInstance().authenticateOAuth2(self)
-        case .Prelogin:
-            print("Ooops")
-        case .Postlogin:
-            print("Authenticated")
-        default:
-            print("Ooops")
-        }
-    }
-    
-    func sendS3File () {
-        //multipart/form-data; boundary=----WebKitFormBoundaryx74HehgeBaBNTFiu
-        //------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="AWSAccessKeyId"
-//        
-//        AKIAIKNTFUJJTNS6N7HA
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="acl"
-//        
-//        private
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="Content-Type"
-//        
-//        binary/octet-stream
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="key"
-//        
-//        member-files/data_selfie/316c4c9c-0e47-11e6-8220-427c209ca999/${filename}
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="policy"
-//        
-//        eyJleHBpcmF0aW9uIjogIjIwMTYtMDQtMjlUMjA6NDY6MDFaIiwiY29uZGl0aW9ucyI6IFt7ImFjbCI6ICJwcml2YXRlIn0seyJidWNrZXQiOiAib3Blbi1odW1hbnMtcHJvZHVjdGlvbiJ9LFsic3RhcnRzLXdpdGgiLCAiJENvbnRlbnQtVHlwZSIsICIiXSxbInN0YXJ0cy13aXRoIiwgIiRrZXkiLCAibWVtYmVyLWZpbGVzL2RhdGFfc2VsZmllLzMxNmM0YzljLTBlNDctMTFlNi04MjIwLTQyN2MyMDljYTk5OS8iXSxbImVxIiwgIiRzdWNjZXNzX2FjdGlvbl9zdGF0dXMiLCAiMjAxIl1dfQ==
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="success_action_status"
-//        
-//        201
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="signature"
-//        
-//        ccn+pwqUPZ8SM/j/0gnMm6u4V2U=
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu
-//        Content-Disposition: form-data; name="file"; filename="test.txt"
-//        Content-Type: text/plain
-//        
-//        
-//        ------WebKitFormBoundaryx74HehgeBaBNTFiu--
-
-        
-    }
-    
-    @IBAction func uploadHealthkitData(sender: AnyObject) {
-        if HKHealthStore.isHealthDataAvailable() {
-            let healthStore = HKHealthStore()
-            healthStore.requestAuthorizationToShareTypes([],
-                                                         readTypes: [HKObjectType.workoutType(),
-                HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType)!,
-                HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth)!,
-                HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex)!,
-                HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierFitzpatrickSkinType)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierNikeFuel)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierUVExposure)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryIron)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryZinc)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBloodGlucose)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFiber)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietarySugar)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryWater)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierInhalerUsage)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierLeanBodyMass)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryBiotin)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCopper)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryFolate)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryIodine)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryNiacin)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietarySodium)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryPhosphorus)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryChloride)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryChromium)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryCalcium)!,
-                HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDietaryProtein)!],
-                                                         completion: { (success, error) in
-                                                            let request = NSMutableURLRequest(URL: NSURL(string: "https://www.openhumans.org/account/login/?next=/activity/data-selfie/upload/")!)
-                                                            let session = NSURLSession.sharedSession()
-                                                            request.HTTPMethod = "GET"
-                                                            let task = session.dataTaskWithRequest(request, completionHandler: {data, resp, error -> Void in
-                                                                if let response = resp as? NSHTTPURLResponse {
-
-                                                                    if let headerFields = response.allHeaderFields as? [String: String] {
-                                                                        let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(headerFields, forURL: response.URL!)
-                                                                        NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(cookies, forURL: response.URL!, mainDocumentURL: nil)
-                                                                        var token = "";
-                                                                        for cookie in cookies {
-                                                                            if (cookie.name == "csrftoken") {
-                                                                                token = cookie.value;
-
-                                                                            }
-                                                                        }
-                                                                        if (token != "") {
-                                                                            NSLog("Token = %@", token)
-                                                                            let request1 = NSMutableURLRequest(URL: NSURL(string: "https://www.openhumans.org/account/login/")!)
-                                                                            request1.HTTPMethod = "POST"
-                                                                            let body = "csrfmiddlewaretoken=" + token + "&next=/activity/data-selfie/upload/&username=blackbearnh&password=rplacA89"
-                                                                            request1.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding)
-//                                                                            request1.addValue(token, forHTTPHeaderField: "X-CSRFToken");
-                                                                            request1.addValue("application/multipart/form-data", forHTTPHeaderField: "Content-Type")
-                                                                            request1.addValue("https://www.openhumans.org/account/login/?next=/activity/data-selfie/upload/", forHTTPHeaderField: "Referer")
-//                                                                            request1.addValue("".stringByAppendingFormat("%d", body.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)), forHTTPHeaderField: "Content-Length")
-                                                                            request1.addValue("text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8", forHTTPHeaderField: "Accept")
-                                                                            let task1 = session.dataTaskWithRequest(request1, completionHandler: {data1, resp1, error -> Void in
-                                                                                if let response1 = resp1 as? NSHTTPURLResponse {
-                                                                                    NSLog("status = %d", response1.statusCode)
-                                                                                    let responseData1 = String(data: data1!, encoding: NSUTF8StringEncoding)
-                                                                                    if let doc = Kanna.HTML(html: responseData1!, encoding: NSUTF8StringEncoding) {
-                                                                                        if let form = doc.at_xpath("//form[@id = 's3upload']") {
-                                                                                            let action = form.xpath("@action").text
-                                                                                            let hiddens = NSMutableDictionary()
-                                                                                            for input in form.xpath(".//input[@type = 'hidden']") {
-                                                                                                hiddens[(input.at_xpath("@name")?.text)!] = input.at_xpath("@value")?.text
-                                                                                            }
-                                                                                            let request2 = NSMutableURLRequest(URL: NSURL(string: action!)!)
-                                                                                            request2.HTTPMethod = "POST"
-                                                                                            let boundary = "----0xdeadbeefdeadbeefdeadbeef";
-                                                                                            request2.addValue("multipart/form-data; boundary=" + boundary, forHTTPHeaderField: "Content-Type")
-                                                                                            var body = NSMutableData()
-
-                                                                                            for ele in hiddens.allKeys {
-                                                                                                let key = ele as! String
-                                                                                                let str = boundary + "\nContent=Disposition: form-data; name=\"" + key + "\"\r\n\r\n" + (hiddens[key] as! String) + "\r\n"
-                                                                                                body.appendData(str.dataUsingEncoding(NSUTF8StringEncoding)!)
-                                                                                            }
-                                                                                            body.appendData("Content-Disposition: form-data; name=\"file\"; filename=\"iostest.txt\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                                                                                            body.appendData("Content-Type: application/octet-stream\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                                                                                            body.appendData("This is a test dump to see if it works\nDoes it?\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-                                                                                            
-                                                                                            request2.HTTPBody = body
-                                                                                            request2.addValue("".stringByAppendingFormat("%d", body.length), forHTTPHeaderField: "Content-Length")
-
-                                                                                        }
-                                                                                    }
-
-                                                                                }
-                                                                            })
-                                                                            task1.resume()
-
-                                                                        }
-                                                                    }
-
-                                                                }
-
-                                                            })
-                                                            
-                                                            task.resume()
-
-                                                            
+        OH_OAuth2.sharedInstance().authenticateOAuth2(self, allowLogin: true, handler: { (status : AuthorizationStatus) -> Void in
+            OH_OAuth2.sharedInstance().getMemberInfo({ (memberId, messagePermission, usernameShared, username, files) in
+                self.performSegueWithIdentifier("startupToMain", sender: self)
+                }, onFailure: {
+                    self.authenticateRequiresLogin()
             })
             
-        }
+        });
     }
+    
 
 }
 

@@ -4,12 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Kanna.xcscheme</key>
+		<key>HealthKitSampleGenerator-HealthKitSampleGenerator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>HealthKitSampleGenerator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-OpenHumansUpload.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03CDE4E6869896D407DEE72DC71A93AB</key>
+		<key>1912B31F190F52BE84545EFCD9ACF4D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6312CAD7E18804AD5E11308495CFD52</key>
+		<key>6ED88866BE01E5DAD93767DF06969F28</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7C4B648C164976A9BACF02FA2C05D09</key>
 		<dict>
 			<key>primary</key>
 			<true/>
