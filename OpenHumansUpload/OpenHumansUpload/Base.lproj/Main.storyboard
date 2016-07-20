@@ -256,7 +256,7 @@
                                 <color key="color" red="0.85882352939999995" green="0.34509803919999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-iN-BLT">
-                                <rect key="frame" x="30" y="260" width="354" height="251"/>
+                                <rect key="frame" x="30" y="260" width="354" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-8N-Nwe">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
@@ -267,7 +267,7 @@
                                             <action selector="uploadData:" destination="8XM-XH-N4x" eventType="touchUpInside" id="4BU-Nf-Tlz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Creates monthly data files from a given start date until today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV2-00-lxe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Creates monthly data files from the earliest collected data until today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV2-00-lxe">
                                         <rect key="frame" x="0.0" y="60" width="354" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,19 +275,21 @@
                                     </label>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Spacer" translatesAutoresizingMaskIntoConstraints="NO" id="FmT-qL-4en" userLabel="Spacer">
                                         <rect key="frame" x="0.0" y="101" width="354" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kJx-6S-MUq">
-                                        <rect key="frame" x="0.0" y="151" width="354" height="59"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJx-6S-MUq">
+                                        <rect key="frame" x="0.0" y="151" width="354" height="48"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Mmj-4e-1Of"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Incremental Upload"/>
                                         <connections>
                                             <action selector="uploadIncremental:" destination="8XM-XH-N4x" eventType="touchUpInside" id="xYJ-tG-a6D"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Creates a single file with all the data since the last full or incremental upload" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-iZ-jCU">
-                                        <rect key="frame" x="0.0" y="210" width="354" height="41"/>
+                                        <rect key="frame" x="0.0" y="199" width="354" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -320,43 +322,12 @@
                                     <constraint firstAttribute="width" constant="235" id="pDW-ms-2La"/>
                                 </constraints>
                             </progressView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DqM-ni-j3o">
-                                <rect key="frame" x="0.0" y="243" width="414" height="493"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="tJH-vo-Rek">
-                                        <rect key="frame" x="0.0" y="140" width="414" height="216"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="490038187.64227003">
-                                            <!--2016-07-12 17:43:07 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Select the First Date to Export" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="pHb-ZL-MWA">
-                                        <rect key="frame" x="8" y="111" width="398" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZx-MK-gfD">
-                                        <rect key="frame" x="190" y="364" width="34" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Start"/>
-                                        <connections>
-                                            <action selector="startUpload:" destination="8XM-XH-N4x" eventType="touchUpInside" id="arV-e0-vF6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.49019610879999997" green="0.7019608021" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="DqM-ni-j3o" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" constant="5" id="3o9-Ms-a4U"/>
-                            <constraint firstItem="DqM-ni-j3o" firstAttribute="top" secondItem="sDF-5T-Ktp" secondAttribute="bottom" constant="8" id="3oh-iD-eek"/>
                             <constraint firstItem="6Ao-jd-ABF" firstAttribute="top" secondItem="r5U-bU-PVE" secondAttribute="bottom" constant="5" id="4Ie-Y8-UIr"/>
                             <constraint firstItem="sDF-5T-Ktp" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="5Tf-4g-efE"/>
                             <constraint firstItem="z1x-iN-BLT" firstAttribute="top" secondItem="IsZ-R0-Cxe" secondAttribute="bottom" constant="15" id="BSc-Xb-Az9"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DqM-ni-j3o" secondAttribute="trailing" constant="5" id="Cmf-6H-wmk"/>
                             <constraint firstItem="z1x-iN-BLT" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" constant="10" id="DVW-Im-NwV"/>
                             <constraint firstItem="xpI-Fb-iag" firstAttribute="top" secondItem="yv7-8j-ajN" secondAttribute="bottom" id="HC8-Ti-JPg"/>
                             <constraint firstItem="r5U-bU-PVE" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" constant="10" id="NkF-yH-vxO"/>
@@ -369,10 +340,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Z9S-jz-8UY" id="POL-sn-tg8"/>
-                        <outlet property="datePickView" destination="DqM-ni-j3o" id="Nuk-xa-0Ou"/>
-                        <outlet property="datePicker" destination="tJH-vo-Rek" id="ZQB-KA-fEf"/>
+                        <outlet property="incrementalButton" destination="kJx-6S-MUq" id="n4H-Tz-wUQ"/>
+                        <outlet property="incrementalLabel" destination="FUf-iZ-jCU" id="nG3-b5-si0"/>
                         <outlet property="progressView" destination="IsZ-R0-Cxe" id="7aW-bo-cRX"/>
-                        <outlet property="startButton" destination="IZx-MK-gfD" id="yPq-0u-KBh"/>
                         <outlet property="uploadButton" destination="gKI-8N-Nwe" id="6Lz-Mb-PkY"/>
                     </connections>
                 </viewController>
