@@ -88,8 +88,8 @@
                                 <rect key="frame" x="189" y="329" width="37" height="37"/>
                                 <color key="color" red="0.85882352939999995" green="0.34509803919999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-Qm-s0b">
-                                <rect key="frame" x="20" y="314" width="374" height="108"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-Qm-s0b">
+                                <rect key="frame" x="20" y="314" width="374" height="99"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6a-ZE-5M0">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
@@ -101,9 +101,9 @@
                                             <segue destination="8XM-XH-N4x" kind="showDetail" identifier="mainMenuToUpload" id="kvG-Hc-Zd0"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-8x-wFN">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="54"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpt-8x-wFN">
+                                        <rect key="frame" x="0.0" y="54" width="374" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Edit Uploaded Data">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -244,66 +244,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="OpenHumansAppLogo180.png" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-5T-Ktp">
-                                <rect key="frame" x="90" y="20" width="235" height="215"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="215" id="4pB-RT-EP8"/>
-                                    <constraint firstAttribute="width" constant="235" id="e5z-k0-0Em"/>
-                                </constraints>
-                            </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Z9S-jz-8UY">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Z9S-jz-8UY">
                                 <rect key="frame" x="189" y="329" width="37" height="37"/>
                                 <color key="color" red="0.85882352939999995" green="0.34509803919999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-iN-BLT">
-                                <rect key="frame" x="30" y="260" width="354" height="240"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="z1x-iN-BLT">
+                                <rect key="frame" x="30" y="308" width="354" height="118"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-8N-Nwe">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKI-8N-Nwe">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <state key="normal" title="Full Upload"/>
+                                        <state key="normal" title="Upload"/>
                                         <connections>
                                             <action selector="uploadData:" destination="8XM-XH-N4x" eventType="touchUpInside" id="4BU-Nf-Tlz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Creates monthly data files from the earliest collected data until today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV2-00-lxe">
-                                        <rect key="frame" x="0.0" y="60" width="354" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="Spacer" translatesAutoresizingMaskIntoConstraints="NO" id="FmT-qL-4en" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="101" width="354" height="50"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJx-6S-MUq">
-                                        <rect key="frame" x="0.0" y="151" width="354" height="48"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Mmj-4e-1Of"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Incremental Upload"/>
-                                        <connections>
-                                            <action selector="uploadIncremental:" destination="8XM-XH-N4x" eventType="touchUpInside" id="xYJ-tG-a6D"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Creates a single file with all the data since the last full or incremental upload" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUf-iZ-jCU">
-                                        <rect key="frame" x="0.0" y="199" width="354" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV2-00-lxe">
+                                        <rect key="frame" x="0.0" y="60" width="354" height="58"/>
+                                        <string key="text">Creates monthly data files from the earliest collected data until today. You'll need to keep this open until upload completes. This can take 15 minutes or more the first time you upload but will run more quickly thereafter.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="FmT-qL-4en" secondAttribute="trailing" id="UNI-bq-gsW"/>
-                                    <constraint firstItem="FmT-qL-4en" firstAttribute="top" secondItem="qV2-00-lxe" secondAttribute="bottom" id="gkB-j4-qS4"/>
-                                    <constraint firstItem="FmT-qL-4en" firstAttribute="leading" secondItem="z1x-iN-BLT" secondAttribute="leading" id="qBX-73-JO8"/>
-                                </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To add or remove types of data being uploaded to the Openhumans website, use the Health App or Settings." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="r5U-bU-PVE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5U-bU-PVE">
                                 <rect key="frame" x="20" y="597" width="374" height="134"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <string key="text">HealthKit data is visible in the Health app. Sharing settings are initialized when you first use this app. After this, you can modify them in the Health app (in the Sources section) on this device.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -316,33 +285,68 @@
                                     <segue destination="AcY-Kg-bqe" kind="showDetail" identifier="uploadToMainMenu" id="TMX-1k-RPe"/>
                                 </connections>
                             </button>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IsZ-R0-Cxe">
-                                <rect key="frame" x="90" y="243" width="235" height="2"/>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IsZ-R0-Cxe">
+                                <rect key="frame" x="90" y="284" width="235" height="2"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="235" id="0KI-8o-K0G"/>
                                     <constraint firstAttribute="width" constant="235" id="pDW-ms-2La"/>
                                 </constraints>
                             </progressView>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MZx-Ti-1iH">
+                                <rect key="frame" x="90" y="294" width="235" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="235" id="Dgy-Li-bkW"/>
+                                    <constraint firstAttribute="width" constant="235" id="Vv2-4f-1oX"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.85882352939999995" green="0.34509803919999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OpenHumansAppLogo180.png" translatesAutoresizingMaskIntoConstraints="NO" id="sDF-5T-Ktp">
+                                <rect key="frame" x="90" y="50" width="235" height="215"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="215" id="4pB-RT-EP8"/>
+                                    <constraint firstAttribute="width" constant="235" id="e5z-k0-0Em"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="215" id="eeb-LY-I2e"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="235" id="i6f-XR-gOD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.49019610879999997" green="0.7019608021" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="6Ao-jd-ABF" firstAttribute="top" secondItem="r5U-bU-PVE" secondAttribute="bottom" constant="5" id="4Ie-Y8-UIr"/>
+                            <constraint firstItem="6Ao-jd-ABF" firstAttribute="top" secondItem="r5U-bU-PVE" secondAttribute="bottom" constant="5" id="5Ku-47-c6c"/>
                             <constraint firstItem="sDF-5T-Ktp" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="5Tf-4g-efE"/>
-                            <constraint firstItem="z1x-iN-BLT" firstAttribute="top" secondItem="IsZ-R0-Cxe" secondAttribute="bottom" constant="15" id="BSc-Xb-Az9"/>
+                            <constraint firstItem="r5U-bU-PVE" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="6ch-eH-Xxi"/>
+                            <constraint firstItem="sDF-5T-Ktp" firstAttribute="top" secondItem="xpI-Fb-iag" secondAttribute="top" constant="30" id="7VX-EN-rON"/>
+                            <constraint firstItem="r5U-bU-PVE" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" id="ALx-U7-khn"/>
+                            <constraint firstItem="z1x-iN-BLT" firstAttribute="top" secondItem="IsZ-R0-Cxe" secondAttribute="bottom" constant="32" id="BSc-Xb-Az9"/>
+                            <constraint firstItem="sDF-5T-Ktp" firstAttribute="leading" secondItem="IsZ-R0-Cxe" secondAttribute="leading" id="D1b-tm-GHo"/>
                             <constraint firstItem="z1x-iN-BLT" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" constant="10" id="DVW-Im-NwV"/>
+                            <constraint firstItem="sDF-5T-Ktp" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="GIr-Es-e6d"/>
                             <constraint firstItem="xpI-Fb-iag" firstAttribute="top" secondItem="yv7-8j-ajN" secondAttribute="bottom" id="HC8-Ti-JPg"/>
-                            <constraint firstItem="r5U-bU-PVE" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" constant="10" id="NkF-yH-vxO"/>
+                            <constraint firstItem="z1x-iN-BLT" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="J68-6k-oD7"/>
+                            <constraint firstItem="IsZ-R0-Cxe" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="LIh-hc-y1P"/>
+                            <constraint firstItem="z1x-iN-BLT" firstAttribute="top" secondItem="Z9S-jz-8UY" secondAttribute="bottom" constant="-74" id="NAy-0m-9PT"/>
+                            <constraint firstItem="r5U-bU-PVE" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" id="NkF-yH-vxO"/>
+                            <constraint firstItem="r5U-bU-PVE" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" id="O9f-Gt-tJJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="z1x-iN-BLT" secondAttribute="trailing" constant="10" id="R4D-5v-mu7"/>
-                            <constraint firstItem="IsZ-R0-Cxe" firstAttribute="top" secondItem="sDF-5T-Ktp" secondAttribute="bottom" constant="8" id="aYQ-AS-Bjl"/>
+                            <constraint firstItem="IsZ-R0-Cxe" firstAttribute="top" secondItem="sDF-5T-Ktp" secondAttribute="bottom" constant="19" id="RWV-dc-fi8"/>
+                            <constraint firstItem="MZx-Ti-1iH" firstAttribute="centerX" secondItem="jGX-lf-MTq" secondAttribute="centerX" id="RqY-Vo-BIo"/>
+                            <constraint firstItem="IsZ-R0-Cxe" firstAttribute="top" secondItem="sDF-5T-Ktp" secondAttribute="bottom" constant="19" id="aYQ-AS-Bjl"/>
                             <constraint firstItem="xpI-Fb-iag" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" id="eIm-q4-Eyv"/>
-                            <constraint firstItem="r5U-bU-PVE" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" constant="10" id="g1Z-ud-DDp"/>
+                            <constraint firstItem="MZx-Ti-1iH" firstAttribute="centerX" secondItem="Z9S-jz-8UY" secondAttribute="centerX" id="fuO-5c-dnK"/>
+                            <constraint firstItem="r5U-bU-PVE" firstAttribute="leading" secondItem="jGX-lf-MTq" secondAttribute="leadingMargin" id="g1Z-ud-DDp"/>
+                            <constraint firstItem="z1x-iN-BLT" firstAttribute="top" secondItem="Z9S-jz-8UY" secondAttribute="bottom" constant="-74" id="gDo-OG-j58"/>
+                            <constraint firstItem="xpI-Fb-iag" firstAttribute="trailing" secondItem="jGX-lf-MTq" secondAttribute="trailingMargin" id="khk-xq-AAb"/>
+                            <constraint firstItem="MZx-Ti-1iH" firstAttribute="top" secondItem="IsZ-R0-Cxe" secondAttribute="bottom" constant="8" id="uIO-zC-mqn"/>
+                            <constraint firstItem="MZx-Ti-1iH" firstAttribute="top" secondItem="IsZ-R0-Cxe" secondAttribute="bottom" constant="8" id="vCB-dD-BUg"/>
+                            <constraint firstItem="IsZ-R0-Cxe" firstAttribute="leading" secondItem="MZx-Ti-1iH" secondAttribute="leading" id="yye-RU-ldC"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Z9S-jz-8UY" id="POL-sn-tg8"/>
-                        <outlet property="incrementalButton" destination="kJx-6S-MUq" id="n4H-Tz-wUQ"/>
-                        <outlet property="incrementalLabel" destination="FUf-iZ-jCU" id="nG3-b5-si0"/>
                         <outlet property="progressView" destination="IsZ-R0-Cxe" id="7aW-bo-cRX"/>
+                        <outlet property="progressView1" destination="MZx-Ti-1iH" id="j6l-RS-LCp"/>
                         <outlet property="uploadButton" destination="gKI-8N-Nwe" id="6Lz-Mb-PkY"/>
                     </connections>
                 </viewController>

@@ -18,29 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Open Humans Uploader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-CL-bMz">
-                                <rect key="frame" x="8" y="342" width="397" height="53"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Open Humans Uploader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Jhg-CL-bMz">
+                                <rect key="frame" x="8" y="397" width="397" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OpenHumansAppLogo180.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZEa-Fd-7e2">
-                                <rect key="frame" x="117" y="79" width="180" height="180"/>
+                                <rect key="frame" x="100" y="79" width="215" height="180"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="dNn-i7-j3l"/>
-                                    <constraint firstAttribute="height" constant="180" id="lLp-Ox-veF"/>
+                                    <constraint firstAttribute="height" constant="180" id="3Q8-LI-xFM"/>
+                                    <constraint firstAttribute="width" constant="215" id="Q25-zZ-yZT"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.49019610879999997" green="0.7019608021" blue="0.93725496529999996" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="10R-3I-Eib"/>
-                            <constraint firstItem="ZEa-Fd-7e2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="59" id="2tY-Tk-fuh"/>
-                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Pp-7Y-azG"/>
-                            <constraint firstItem="ZEa-Fd-7e2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="KVm-D0-lwK"/>
-                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-12" id="OnG-Mi-Edn"/>
-                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="PLp-tc-bbs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Jhg-CL-bMz" secondAttribute="trailing" constant="-11" id="QhY-vV-MFH"/>
+                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="6Ah-s5-WWW"/>
+                            <constraint firstItem="ZEa-Fd-7e2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="D2y-ml-WMW"/>
+                            <constraint firstItem="Jhg-CL-bMz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-12" id="N9q-tu-5A6"/>
+                            <constraint firstItem="ZEa-Fd-7e2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="59" id="cDw-w6-pG7"/>
+                            <constraint firstItem="ZEa-Fd-7e2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="iXY-a7-10O"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
