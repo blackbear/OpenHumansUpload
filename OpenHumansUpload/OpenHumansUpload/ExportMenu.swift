@@ -31,7 +31,7 @@ class ExportMenu: UIViewController {
 
         
     }
-    
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         self.uploadButton.layer.cornerRadius=5
@@ -70,7 +70,7 @@ class ExportMenu: UIViewController {
         if (now.compare(endOfMonth!) == .OrderedAscending) {
             endOfMonth = now
         }
-        let configuration   = HealthDataFullExportConfiguration(profileName: "Profilname", exportType: HealthDataToExportType.ALL, startDate: currentDate, endDate: endOfMonth)
+        let configuration   = HealthDataFullExportConfiguration(profileName: "Profilname", exportType: HealthDataToExportType.ALL, startDate: currentDate, endDate: endOfMonth!)
         let target = JsonSingleDocInMemExportTarget()
         // create your instance of HKHeakthStore
         // and pass it to the HealthKitDataExporter

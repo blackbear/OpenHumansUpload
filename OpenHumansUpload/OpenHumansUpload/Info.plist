@@ -35,6 +35,20 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>9</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>234671085b2ddbed458e041e25ca9e4639079896</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>

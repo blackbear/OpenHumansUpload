@@ -109,20 +109,28 @@ class OH_OAuth2 : NSObject, SFSafariViewControllerDelegate {
         
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
             do {
-                var htresponse = response as! NSHTTPURLResponse
+                let htresponse = response as! NSHTTPURLResponse
                 if (htresponse.statusCode != 200) {
                     onFailure()
                 }
-                var jsonString = String(data: data!, encoding: NSUTF8StringEncoding)
                 var json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? JSONDictionary
-                if (json != nil) {
-                    if (json!["project_member_id"] != nil) {
-                        self.memberId = json!["project_member_id"] as! String
-                        let messagePermission = json!["message_permission"] as! Bool
-                        let usernameShared = json!["username_shared"] as! Bool
-                        let fileList = json!["data"] as! JSONArray
+                if let json = json {
+                    if (json["project_member_id"] != nil) {
+                        self.memberId = (json["project_member_id"] as! String)
+                        let messagePermission = json["message_permission"] as! Bool
+                        var usernameShared = false
+                        var fileList = [] as! JSONArray
+                        var username = ""
+                        if let x = json["username_shared"] {
+                            usernameShared = x as! Bool
+                        }
+                        if let x = json["data"] {
+                            fileList = x as! JSONArray
+                        }
 //                let sources_shared = json!["sources_shared"] as! Dictionary
-                        let username = json!["username"] as? String
+                        if let x = json["username"] {
+                            username = json["username"] as! String
+                        }
                         onSuccess(memberId: self.memberId!, messagePermission: messagePermission, usernameShared: usernameShared, username: username, files:fileList)
                         return
                     }
@@ -211,7 +219,7 @@ class OH_OAuth2 : NSObject, SFSafariViewControllerDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            if let wv = self.wv_vc {
+            if self.wv_vc != nil {
                 dispatch_async(dispatch_get_main_queue(), { 
                     self.wv_vc?.dismissViewControllerAnimated(true, completion: {
                         self.processResponse(data, error:error, grantType:grantType)
@@ -326,6 +334,12 @@ class OH_OAuth2 : NSObject, SFSafariViewControllerDelegate {
     }
     
     func uploadFile(fileName : String, data : String, memberId : String, handler:(success: Bool, filename: String?) -> Void) -> Void {
+        let dic = NSProcessInfo.processInfo().environment
+        if dic["dont_send"] != nil {
+            NSLog("Sending file %@ with data %@", fileName, data)
+            handler(success: true, filename: nil)
+            return
+        }
         let prefs = NSUserDefaults.standardUserDefaults()
         let accessToken = prefs.stringForKey("oauth2_access_token")
         let reqString = "https://www.openhumans.org/api/direct-sharing/project/files/upload/?access_token=" + accessToken!;

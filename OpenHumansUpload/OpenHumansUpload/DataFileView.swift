@@ -74,7 +74,7 @@ class DataFileView: UIViewController, UITableViewDelegate, UITableViewDataSource
         let cell = tableView.dequeueReusableCellWithIdentifier("DataFileCell", forIndexPath: indexPath) as! DataFileCell
         let json = dataFiles[indexPath.row]
         cell.backgroundColor = tableView.backgroundColor
-        cell.fileName!.text = json["basename"] as! String
+        cell.fileName!.text = (json["basename"] as! String)
         print(json["basename"])
         return cell
     }

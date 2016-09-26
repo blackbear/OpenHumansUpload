@@ -9,6 +9,7 @@
 import UIKit
 import HealthKit
 import Foundation
+import Crashlytics
 
 class ViewController: UIViewController {
 
@@ -26,6 +27,12 @@ class ViewController: UIViewController {
     
     var currentState = AppState.Start
     
+    func logUser(userId : String) {
+    // TODO: Use the current user's information
+    // You can call any combination of these three methods
+        Crashlytics.sharedInstance().setUserIdentifier(userId)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         instructions.hidden = true
@@ -38,6 +45,7 @@ class ViewController: UIViewController {
             OH_OAuth2.sharedInstance().authenticateOAuth2(self, allowLogin: false, handler: { (status : AuthorizationStatus) -> Void in
                 if (status == AuthorizationStatus.AUTHORIZED) {
                     OH_OAuth2.sharedInstance().getMemberInfo({ (memberId, messagePermission, usernameShared, username, files) in
+                        self.logUser(memberId)
                         self.fileList = files
                         dispatch_async(dispatch_get_main_queue(), { 
                             self.performSegueWithIdentifier("startupToMain", sender: self)
@@ -61,7 +69,7 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "startupToMain") {
-            var vc = segue.destinationViewController as! MainMenu
+            let vc = segue.destinationViewController as! MainMenu
             vc.fileList = fileList
         }
     }
@@ -106,6 +114,7 @@ class ViewController: UIViewController {
     @IBAction func nextAction(sender: AnyObject) {
         OH_OAuth2.sharedInstance().authenticateOAuth2(self, allowLogin: true, handler: { (status : AuthorizationStatus) -> Void in
             OH_OAuth2.sharedInstance().getMemberInfo({ (memberId, messagePermission, usernameShared, username, files) in
+                self.logUser(memberId)
                 self.performSegueWithIdentifier("startupToMain", sender: self)
                 }, onFailure: {
                     self.authenticateRequiresLogin()

@@ -23,9 +23,10 @@
 		1A9FE51D1D245E9A006B8E13 /* OpenHumansAppLogo180.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A9FE51C1D245E9A006B8E13 /* OpenHumansAppLogo180.png */; };
 		1A9FE5211D26F59B006B8E13 /* DataFileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9FE5201D26F59B006B8E13 /* DataFileView.swift */; };
 		1AD810B11D075E2A00867498 /* OH_OAuth2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD810B01D075E2A00867498 /* OH_OAuth2.swift */; };
-		1AD810B31D076D3300867498 /* OhSettings-staging.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B21D076D3300867498 /* OhSettings-staging.plist */; };
 		1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810B61D076F1000867498 /* OhSettings-example.plist */; };
 		1AD810BB1D08985A00867498 /* close-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AD810BA1D08985A00867498 /* close-button.png */; };
+		1AE68E561D4FDA4C00A6268F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE68E541D4FDA4C00A6268F /* Fabric.framework */; };
+		1AE68E571D4FDA4C00A6268F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE68E551D4FDA4C00A6268F /* Crashlytics.framework */; };
 		FC286A3CFF7424F73EB46D3A /* Pods_OpenHumansUpload.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9CDAFFC729ED0FED95EA7A4 /* Pods_OpenHumansUpload.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,9 +50,10 @@
 		1A9FE51C1D245E9A006B8E13 /* OpenHumansAppLogo180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OpenHumansAppLogo180.png; sourceTree = "<group>"; };
 		1A9FE5201D26F59B006B8E13 /* DataFileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFileView.swift; sourceTree = "<group>"; };
 		1AD810B01D075E2A00867498 /* OH_OAuth2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OH_OAuth2.swift; sourceTree = "<group>"; };
-		1AD810B21D076D3300867498 /* OhSettings-staging.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OhSettings-staging.plist"; sourceTree = "<group>"; };
 		1AD810B61D076F1000867498 /* OhSettings-example.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OhSettings-example.plist"; sourceTree = "<group>"; };
 		1AD810BA1D08985A00867498 /* close-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-button.png"; sourceTree = "<group>"; };
+		1AE68E541D4FDA4C00A6268F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		1AE68E551D4FDA4C00A6268F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		778938E4DF8AD4A786BBC559 /* Pods-OpenHumansUpload.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenHumansUpload.release.xcconfig"; path = "../Pods/Target Support Files/Pods-OpenHumansUpload/Pods-OpenHumansUpload.release.xcconfig"; sourceTree = "<group>"; };
 		D55D04439C849A57629B547D /* Pods-OpenHumansUpload.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OpenHumansUpload.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-OpenHumansUpload/Pods-OpenHumansUpload.debug.xcconfig"; sourceTree = "<group>"; };
 		E9CDAFFC729ED0FED95EA7A4 /* Pods_OpenHumansUpload.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OpenHumansUpload.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,8 +65,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A1FA4001D2307EC004BC352 /* libxml2.tbd in Frameworks */,
+				1AE68E571D4FDA4C00A6268F /* Crashlytics.framework in Frameworks */,
 				1A9D6C391CD2AC5900FF91CD /* HealthKit.framework in Frameworks */,
 				FC286A3CFF7424F73EB46D3A /* Pods_OpenHumansUpload.framework in Frameworks */,
+				1AE68E561D4FDA4C00A6268F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +117,6 @@
 				1A9D6C161CD2A6B100FF91CD /* Info.plist */,
 				1A9D6C0E1CD2A6B100FF91CD /* OpenHumansUpload.xcdatamodeld */,
 				1AD810B01D075E2A00867498 /* OH_OAuth2.swift */,
-				1AD810B21D076D3300867498 /* OhSettings-staging.plist */,
 				1A54C0CB1D146C06002C0C81 /* OhSettings.plist */,
 				1AD810B61D076F1000867498 /* OhSettings-example.plist */,
 				1A54C0CF1D159428002C0C81 /* DataView.swift */,
@@ -127,6 +130,8 @@
 		40F6AFCBB972ACE67F24D7E5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				1AE68E541D4FDA4C00A6268F /* Fabric.framework */,
+				1AE68E551D4FDA4C00A6268F /* Crashlytics.framework */,
 				D55D04439C849A57629B547D /* Pods-OpenHumansUpload.debug.xcconfig */,
 				778938E4DF8AD4A786BBC559 /* Pods-OpenHumansUpload.release.xcconfig */,
 			);
@@ -155,6 +160,7 @@
 				1A9D6C021CD2A6B100FF91CD /* Resources */,
 				8450C5BC03ADCE20670E7E5F /* [CP] Embed Pods Frameworks */,
 				5542E31CC2D08592F76ED1FA /* [CP] Copy Pods Resources */,
+				1AE68E531D4FD99800A6268F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -172,7 +178,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Open Humans";
 				TargetAttributes = {
 					1A9D6C031CD2A6B100FF91CD = {
@@ -217,7 +223,6 @@
 				1A9FE51D1D245E9A006B8E13 /* OpenHumansAppLogo180.png in Resources */,
 				1A9D6C0D1CD2A6B100FF91CD /* Main.storyboard in Resources */,
 				1AD810B71D076F1000867498 /* OhSettings-example.plist in Resources */,
-				1AD810B31D076D3300867498 /* OhSettings-staging.plist in Resources */,
 				1A52928A1D00B7880081F097 /* openhumans.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +230,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1AE68E531D4FD99800A6268F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 234671085b2ddbed458e041e25ca9e4639079896 4fd90cce1b0faa45fe7a3a54820bc4a0ca0093413405cdfd44bc8ad0ddcc1d19c2d7fd";
+		};
 		5542E31CC2D08592F76ED1FA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,8 +342,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -369,8 +389,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -389,6 +411,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -397,11 +420,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D55D04439C849A57629B547D /* Pods-OpenHumansUpload.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OpenHumansUpload/OpenHumansUpload.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OpenHumansUpload/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -418,11 +447,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 778938E4DF8AD4A786BBC559 /* Pods-OpenHumansUpload.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OpenHumansUpload/OpenHumansUpload.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = OpenHumansUpload/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
